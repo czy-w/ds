@@ -75,6 +75,10 @@ def plot_horizontal_bar(movie_names, box_office, year, fig_size=(38,38)):
     # 设置y轴标签为电影名，并反转y轴顺序使最高票房位于顶部
     ax.set_yticks(positions)
     ax.set_yticklabels(movie_names_sorted)
+    labels = ax.get_yticklabels()
+    for label in labels:
+        label.set_fontsize(40)
+        label.set_fontweight('bold')
     ax.invert_yaxis()
     ax.set_xlabel('阅读人数', fontsize=30, color='gray')
     ax.set_ylabel('书名', fontsize=30, color='gray')
@@ -124,6 +128,10 @@ def plot_top_50_overall(all_movies, fig_size=(38,38)):
     # 设置y轴标签为电影名，并反转y轴顺序使最高票房位于顶部
     ax.set_yticks(positions)
     ax.set_yticklabels(movie_names)
+    labels = ax.get_yticklabels()
+    for label in labels:
+        label.set_fontsize(30)
+        label.set_fontweight('bold')
     ax.invert_yaxis()  # 反转y轴使得最高的条形在顶部
 
     ax.set_xlabel('阅读人数', fontsize=30, color='gray') #,position=(0, 0.5))
