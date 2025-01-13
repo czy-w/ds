@@ -23,7 +23,7 @@ def read_csv_and_process(file_path):
     读取CSV文件并返回处理后的数据（电影名和票房数据以及年份）
     """
     df = pd.read_csv(file_path, encoding='utf-8')
-    df = df.head(50)
+    df = df.head(60)
     movie_names = [name.replace('\u200c', '') for name in df.iloc[:, 1].tolist()]
     box_office = [int(box_office) for box_office in df.iloc[:, 2].tolist()]
     year = os.path.splitext(os.path.basename(file_path))[0]
@@ -48,7 +48,7 @@ def collect_all_movies_data():
     return all_movies
 
 
-def plot_horizontal_bar(movie_names, box_office, year, fig_size=(38,38)):
+def plot_horizontal_bar(movie_names, box_office, year, fig_size=(40,40)):
     """
     绘制横向条形图展示电影票房数据，并标注年份，返回图像数组
     """
@@ -102,12 +102,12 @@ def plot_horizontal_bar(movie_names, box_office, year, fig_size=(38,38)):
     return save_and_close(fig)
 
 
-def plot_top_50_overall(all_movies, fig_size=(38,38)):
+def plot_top_50_overall(all_movies, fig_size=(40,40)):
     """
     绘制所有年份中票房前50的电影汇总图表，并返回图像数组
     """
 
-    plt.rcParams.update({'font.size': 30})  # 调整此值以适应您的需要
+    plt.rcParams.update({'font.size': 30})
     # 获取并根据票房降序排序前50的电影
     top_50_movies_sorted = sorted(all_movies, key=lambda x: x[1], reverse=True)[:50]
 
